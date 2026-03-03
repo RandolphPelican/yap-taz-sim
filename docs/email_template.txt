@@ -1,0 +1,19 @@
+Subject: Bistable YAP/TAZ model for gingival regeneration — collaboration opportunity
+
+Dr. [NAME],
+
+I've been following your work on [SPECIFIC PAPER/TOPIC] and was particularly struck by [SPECIFIC FINDING]. I'm reaching out because I've developed a mechanistic framework for non-surgical gingival regeneration that I believe could be validated quickly with the right collaborator.
+
+The core finding: Adult gingiva is locked in a bistable fibrotic state via dysregulated YAP/TAZ mechanotransduction. I've built an ODE model (grounded in Dupont/Elosegui-Artola literature) showing a therapeutic window at 1.3-8.7 kPa where transient LATS inhibition can flip tissue from fibrosis → regeneration with hysteresis (repair persists after drug clears).
+
+The model makes three falsifiable predictions testable in ex vivo explants over 12-18 months (~$220K, R21 scale). I've attached a 1-page concept note with the math, simulation results, and experimental design.
+
+If this resonates with your research direction, I'd welcome a brief call to explore whether there's a collaboration fit. I'm happy to share the full technical spec (40 pages) and simulation code.
+
+Best regards,
+John Stabler
+[Contact info]
+
+Attachments:
+- CONCEPT_NOTE.md
+- bistable_yap_framework.png
