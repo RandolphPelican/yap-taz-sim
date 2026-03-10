@@ -1,0 +1,13 @@
+FIGURE LEGENDS
+
+Figure 1. Bistable YAP/TAZ Framework
+Multi-panel visualization showing: (A) Mechanistic schematic of YAP/TAZ as stiffness-gated switch with three tissue states. (B) Hysteresis curve demonstrating bistable region (1.31-8.69 kPa) with upper regenerative branch and lower fibrotic branch. (C) Time-series trajectories at critical stiffness values showing path-dependent outcomes.
+
+Figure 2. Phase Space Trajectories
+Two-dimensional phase diagram (YAP activity × stiffness) with overlaid trajectories for: successful intervention (TRULI + soft scaffold), failed control (no drug), and drug-only condition. Regions I-IV marked showing fibrotic, hyperplastic, quiescent, and regenerative basins.
+
+Figure 3. Dose-Response Analysis  
+Simulation results showing final regenerative state as function of TRULI concentration and treatment duration. Green regions indicate successful repair (R > 0.7), yellow suboptimal, red safety concerns.
+
+Supplementary Figure S1. Parameter Sensitivity
+Monte Carlo analysis (n=1000) demonstrating model robustness under ±20% parameter variation. Bistable window remains stable at 1.28-8.74 kPa (mean ± SD).

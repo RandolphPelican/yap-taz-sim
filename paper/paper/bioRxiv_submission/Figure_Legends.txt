@@ -1,0 +1,13 @@
+FIGURE LEGENDS
+
+Figure 1. Bistable YAP/TAZ Dynamics in Gingival Tissue
+(A) Steady-state analysis showing upper (regenerative, red line) and lower (fibrotic, blue dashed line) solution branches as a function of extracellular matrix stiffness. Orange shaded region indicates bistable zone (1.31-8.69 kPa) where both states are stable. Green background shows stiffness activation function f(S) normalized to [0,1]. (B) Bell-shaped stiffness activation capturing non-monotonic YAP/TAZ response observed experimentally [21,22]. Physiological gingival stiffness range (2-8 kPa) overlaps with optimal activation window.
+
+Figure 2. Transient LATS Inhibition Enables Persistent Regeneration
+(A) Time-series trajectories showing regenerative fraction R(t), YAP nuclear localization, and drug concentration L(t) for three conditions: TRULI 2μM + soft scaffold (green, successful), no drug (red, failed), and TRULI only without scaffold softening (orange, partial). Vertical dashed line marks drug washout at 48h. (B) Phase space representation (YAP activity × stiffness) with trajectories color-coded by condition. Successful intervention (green arrow) crosses from fibrotic basin (lower left) through regenerative region (center) and stabilizes despite YAP declining post-washout.
+
+Figure 3. Therapeutic Window and Safety Margins
+Heat map showing final regenerative state R(day 7) as function of TRULI dose (x-axis, 0-10 μM) and scaffold stiffness (y-axis, 1-15 kPa). Green region: successful repair (R > 0.7). Yellow: suboptimal (0.4 < R < 0.7). Red: safety concerns (sustained YAP or insufficient repair). White contour line marks R = 0.7 threshold. Optimal therapeutic window: 1-3 μM TRULI at 3-6 kPa stiffness.
+
+Supplementary Figure S1. Model Robustness to Parameter Uncertainty
+Monte Carlo sensitivity analysis (n=1000 simulations) with ±20% variation in all model parameters. (A) Distribution of predicted bistable region boundaries (blue: lower threshold, red: upper threshold). Mean ± SD: 1.28±0.15 kPa to 8.74±0.22 kPa. (B) Violin plots of key therapeutic metrics: optimal dose (1.8±0.4 μM), time to repair (52±8 h), and therapeutic index (5.2±0.8). All metrics remain within clinically feasible ranges despite parameter uncertainty.

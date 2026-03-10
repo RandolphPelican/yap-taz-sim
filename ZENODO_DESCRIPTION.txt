@@ -1,0 +1,153 @@
+ZENODO DEPOSIT DESCRIPTION
+YAP/TAZ Bistable Mechanosensitive Switch: Reproducible Simulation Code and Validation Suite
+===========================================================================================
+
+Title
+-----
+YAP/TAZ Bistable Mechanosensitive Switch: Reproducible Simulation Code, Model Repository, and Robustness Validation Suite
+
+Description
+-----------
+This repository contains the full computational implementation, validation simulations, figures, and reproducibility materials for the manuscript:
+
+  "A Bistable Mechanosensitive Switch Model Predicts Transient YAP/TAZ
+   Disinhibition Enables Gingival Regeneration"
+   John D. Stabler, Independent Researcher, Boca Raton, FL
+
+Core Question Addressed
+-----------------------
+Can transient biochemical intervention (LATS1/2 inhibition) induce permanent
+phenotypic change in mechanically static gingival tissue—and is this transition
+robust to biological noise, imperfect drug pharmacokinetics, and spatial
+heterogeneity across a tissue?
+
+The model answers: yes, via a bistable YAP/TAZ switch produced by ultrasensitive
+positive feedback through the YAP-actin-ECM loop, with a therapeutic window of
+approximately 1.31–8.69 kPa.
+
+Model Framework
+---------------
+The regenerative fraction R(t) evolves according to:
+
+  dR/dt = α · f(S) · σ(R) · (1−R) − β · g(L) · (1−f(S)) · R
+
+with stiffness activation:
+  f(S) = exp(−(S − S₀)² / 2σ²)
+
+and ultrasensitive Hill feedback:
+  σ(R) = Rⁿ / (θⁿ + Rⁿ)
+
+and drug modulation:
+  g(L) = K_L / (L + K_L)
+
+Default parameters: α=2.0 h⁻¹, β=0.5 h⁻¹, S₀=5 kPa, σ=2 kPa, θ=0.3, n=4.
+Bistability requires n>1; saddle-node bifurcations bracket the therapeutic window.
+
+Contents
+--------
+1. Core Model
+   • model.py            — ODE implementation, stiffness function, Hill feedback
+   • parameters.json     — Full parameter set with justifications
+   • simulate_window.py  — Stiffness sweep and hysteresis computation
+   • sensitivity_analysis.py — Monte Carlo ±20% robustness (n=1000)
+
+2. Validation Simulation Suite (New — v1.1)
+   • sim1_feedback_knockout.py  — Confirms Hill loop is necessary for bistability;
+                                   full KO (n=1) abolishes hysteresis entirely
+                                   (gap: 0.997 → 0.000)
+   • sim2_imperfect_washout.py  — Demonstrates hysteresis robustness to exponential
+                                   drug decay; all half-lives 1–96h yield R_final ≥ 0.967
+   • sim3_agent_based.py        — 30×30 spatial tissue grid; shows regenerative state
+                                   propagates from a small seed to 100% tissue coverage
+                                   via ECM-mediated coupling
+   • sim4_stochastic_cle.py     — Chemical Langevin Equation (N=1000 cells); confirms
+                                   bimodal distribution at bistable stiffness; honest
+                                   boundary conditions documented for noise amplitude
+   • run_all_sims.py            — Master runner (~2–5 min on standard hardware)
+
+3. Jupyter Notebooks
+   • YAPTAZ_Bistability.ipynb   — Interactive bistability exploration
+   • Hysteresis_Demo.ipynb      — Upper/lower branch visualization
+   • Drug_Pulse_Simulation.ipynb — Transient LATS inhibition dynamics
+
+4. Generated Figures (./figures/)
+   • sim1_feedback_knockout.png    — WT vs KO vs partial-KO steady-state branches
+   • sim2_imperfect_washout.png    — Time-series per half-life (6 panels)
+   • sim2_clearance_summary.png    — Bar chart of R_final vs drug half-life
+   • sim3_abm_spatial.png          — Spatial heatmaps at 7 timepoints
+   • sim3_abm_dynamics.png         — Mean R and % regenerative vs time
+   • sim4_stochastic_cle.png       — Histograms + spontaneous switching trajectories
+   • regeneration_window.png       — Main manuscript bistability diagram
+   • bifurcation_diagram.png       — Saddle-node structure
+   • sensitivity_S1.png            — Monte Carlo parameter sensitivity
+
+5. Documentation
+   • README.md              — Installation, usage, simulation descriptions
+   • model_description.pdf  — Mathematical formulation and assumptions
+   • CHANGELOG.md           — Version history
+   • ZENODO_DESCRIPTION.txt — This file
+
+How to Reproduce
+----------------
+  git clone https://github.com/RandolphPelican/yap-taz-sim
+  cd yap-taz-sim
+  pip install numpy scipy matplotlib
+  python run_all_sims.py
+
+No GPU required. Total runtime: <5 minutes on standard laptop hardware.
+All figures reproduce from scratch.
+
+Limitations (Documented for Reviewer Transparency)
+---------------------------------------------------
+This ODE model abstracts spatial heterogeneity, inflammation coupling, and
+single-cell stochasticity. Specifically:
+
+• The Hill feedback term σ(R) is phenomenological; it encodes the YAP-actin-ECM
+  loop without resolving individual molecular species. Simulation 1 confirms the
+  functional form is necessary; the exact n and θ were calibrated from literature.
+
+• The stochastic simulation (Sim 4) reveals that at noise amplitude η=0.05
+  (~5% of dR/dt), spontaneous crossing events are non-negligible (~1.8%/day
+  in the bistable zone from fibrotic starts). This sets an honest lower bound
+  on the required signal-to-noise ratio for reliable therapeutic switching.
+  For high-copy transcriptional regulators like YAP/TAZ, η is likely lower.
+
+• The ABM uses Euler-Maruyama spatial coupling and Moore neighborhood averaging,
+  not a full PDE with diffusion coefficients. The spatial predictions are
+  qualitative, not quantitative.
+
+These limitations are documented in the manuscript Discussion section and do
+not alter the core theoretical prediction.
+
+Key Numerical Results
+---------------------
+Sim 1: Bistable window (WT)     : 1.27–8.73 kPa  (gap = 0.997)
+       Bistable window (full KO): NONE            (gap = 0.000)
+Sim 2: Min R_final across all washout scenarios: 0.967 (at t½=1h)
+Sim 3: Final tissue regeneration: 100% (from 4×4 seed in fibrotic background)
+Sim 4: Bimodal distribution at S=4 kPa confirmed; 77.9% regenerative cells
+       Spontaneous switch rate: 1.78%/day at η=0.05
+
+Version
+-------
+v1.1.0 — Full validation suite release
+Includes all manuscript figures + 4 robustness/validation simulations.
+(v1.0.0 was initial manuscript submission code release)
+
+Links
+-----
+• bioRxiv preprint: [to be added after upload]
+• GitHub: https://github.com/RandolphPelican/yap-taz-sim
+
+License
+-------
+MIT License — free for academic and commercial use with attribution.
+
+Funding
+-------
+Independent research; no external funding.
+
+Contact
+-------
+Randolph Pelican | JohnDStabler@gmail.com
+GitHub: https://github.com/RandolphPelican
